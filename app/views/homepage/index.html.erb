@@ -1,0 +1,103 @@
+
+  <style>
+      .buttonyellow {
+          display: inline-block;
+          margin:15px;
+          padding: 15px 25px;
+          font-size: 24px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          color: grey;
+          background-color: yellow;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 9px #999999;
+      }
+
+      .buttongreen {
+          display: inline-block;
+          margin:15px;
+          padding: 15px 25px;
+          font-size: 24px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          color: white;
+          background-color: #4CAF50;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 9px #999;
+      }
+
+      .buttongreen:hover {background-color: #3e8e41}
+
+      .buttongreen:active {
+          background-color: #3e8e41;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+      }
+
+      .buttonyellow:hover {background-color: #c6ca5a
+      }
+
+      .buttonyellow:active {
+          background-color: yellow;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+      }
+  </style>
+
+<h1>This is the home page</h1>
+<h1>Penis</h1>
+
+<div style="height:100px">
+  <div id="logo" style="float:left;">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.jpg', width: 110, height: 100, alt: 'homepage'%>
+    <% end %>
+  </div>
+  <div id="login" style="float:right;">
+    <button class="buttonyellow">Vote</button>
+    <button class="buttongreen">Admin Login</button>
+  </div>
+
+</div>
+
+  <hr>
+
+  <div style="margin-left:10%; margin-right:10%; margin-top:50px">
+    <div style="width:60%; float:right; margin:20px">
+      <%= image_tag 'voting.png', width: 500, height: 300, alt: 'voting'%>
+    </div>
+    <div style="width:25%; float:left;">
+      <p>
+        I'm the Scatman
+      </p>
+      <p>
+        Ski-bi dibby dib yo da dub dub
+        Yo da dub dub
+        Ski-bi dibby dib yo da dub dub
+        Yo da dub dub
+        (I'm the Scatman)
+        Ski-bi dibby dib yo da dub dub
+        Yo da dub dub
+        Ski-bi dibby dib yo da dub dub
+        Yo da dub dub
+        Ba-da-ba-da-ba-be bop bop bodda bope
+        Bop ba bodda bope
+        Be bop ba bodda bope
+        Bop ba bodda
+        Ba-da-ba-da-ba-be bop ba bodda bope
+        Bop ba bodda bope
+        Be bop ba bodda bope
+        Bop ba bodda bope
+      </p>
+    </div>
+  </div>
+
+
+
+

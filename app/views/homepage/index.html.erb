@@ -60,7 +60,11 @@
     <% end %>
   </div>
   <div id="login" style="float:right;">
-    <button class="buttonyellow">Vote</button>
+    <button class="buttonyellow">
+      <%= link_to voter_path do %>
+        Vote
+      <% end %>
+    </button>
     <button class="buttongreen">Admin Login</button>
   </div>
 

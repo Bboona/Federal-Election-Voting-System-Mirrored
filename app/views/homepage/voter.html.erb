@@ -1,0 +1,193 @@
+<!--https://stackoverflow.com/questions/1479219/validate-multiple-selects-for-preference-voting-in-rails?rq=1-->
+
+<style>
+
+    .voteoption {
+        width: 10em;
+        height: 25px;
+        position: relative;
+        background: black;
+        padding: 0px 0px 0px 0px;
+    }
+    .voteoption:before {
+        content: "";
+        position: absolute;
+        right: -20px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 20px solid black;
+        border-top: 12.5px solid transparent;
+        border-bottom: 12.5px solid transparent;
+    }
+    .voteoption-text {
+        color: white;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .option-a{
+        border-bottom: 15px solid black
+    }
+    .ballot-col{
+        border-left: 1px solid black;
+        padding: 3px;
+    }
+    select{
+        background-color: white;
+        height: 40px;
+        width: 40px;
+        /*float: left;*/
+        border: 2px solid #000;
+        font-size: 1.4em;
+        text-align-last: center;
+    }
+
+</style>
+
+<h1>Vote</h1>
+
+<div style="height:100px">
+  <div id="logo" style="float:left;">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.jpg', width: 110, height: 100, alt: 'homepage'%>
+    <% end %>
+  </div>
+
+  <!--this button will look good once semantic is installed-->
+  <%= link_to root_path, class: "ui button" do %>
+    <i class="home icon"></i> Home
+<% end %>
+
+</div>
+
+<hr>
+
+
+<form id="voteform">
+  <div class="ui grid">
+    <div class="option-a equal width row">
+      <div class="option-desc column">
+        <p class="description">
+          <h2>You may
+            <br>
+            vote in one of
+            <br>
+            2 ways
+          </h2>
+          <div class="voteoption">
+            <p class="voteoption-text">Either:</p>
+          </div>
+          <h2>Above the line</h2>
+          <p>By numbering at least <strong>6</strong><br>
+          of these boxes in the order<br>
+          of your choice (with number<br>
+          1 as your first choice)</p>
+      </div>
+
+      <!--  here goes selection forms-->
+      <div class="ballot-col column">
+        A<br><br><br><br><br>
+        <select name="candidate0">
+          <option value="" label=" "></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <h5>PARTY 1</h5>
+      </div>
+
+
+      <div class="ballot-col column">
+        B<br><br><br><br><br>
+        <select name="candidate2">
+          <option value="" label=" "></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <h5>PARTY 2</h5>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="option-b equal width row">
+    <div class="option-desc column">
+    <p class="description">
+    <div class="voteoption">
+      <p class="voteoption-text">Or:</p>
+    </div>
+
+    <h2>Below the line</h2>
+    <p>By numbering at least <strong>12</strong><br>
+      of these boxes in the order<br>
+      of your choice (with number<br>
+      1 as your first choice)</p>
+    </div>
+  </div>
+
+  <!--  here goes selection forms-->
+  <div class="ballot-col column">
+    <h5>PARTY 1</h5>
+    <select name="candidate0">
+      <option value="" label=" "></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <br>
+    <br>
+    <select name="candidate1">
+      <option value="" label=" "></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </div>
+
+
+  <div class="ballot-col column">
+    <h5>PARTY 2</h5>
+    <select name="candidate2">
+      <option value="" label=" "></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </div>
+
+
+
+</form>
+
+<%# form_for :vote, @vote, :url => {:action => "create"}, :html => {:class => "nifty_form"} do |form| %>
+<%# @parties.each do |party| %>
+  <%# @candidates.each do |candidate| %>
+
+    <%# if candidate.associated_party == party %>
+      <%#= form.select ((1..6).map {|i| [i,i] }) %>
+
+    <%# end %>
+
+  <%# end %>
+
+  <%# end %>
+<%# end %>

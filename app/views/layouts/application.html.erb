@@ -10,7 +10,33 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <style>
+    .header{
+      background-color: #6e267b;
+      height: 130px;
+      padding: 5px;
+    }
+  </style>
+
   <body>
+
+    <div style="height:150px" class="header">
+      <div id="logo" style="float:left;">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', width: 110, height: 100, alt: 'homepage'%>
+        <% end %>
+      </div>
+
+
+      <h1 style="color: white;">Vote</h1>
+
+      <!--this button will look good once semantic is installed-->
+      <%= link_to root_path, class: "ui button" do %>
+        <i class="home icon"></i> Home
+      <% end %>
+    </div>
+
     <%= yield %>
+
   </body>
 </html>

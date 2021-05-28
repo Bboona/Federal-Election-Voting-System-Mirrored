@@ -44,6 +44,33 @@
         text-align-last: center;
     }
 
+    #results-table {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #results-table th{
+        border: 1px solid white;
+    }
+
+    #results-table thead tr {
+        background-color: #6d2787;
+        color: white;
+
+    }
+
+    #results-table td {
+      padding: 1em;
+    }
+
+    #results-table tbody tr {
+        border-bottom: 1px solid black;
+    }
+
+    #results-table tbody tr:nth-of-type(even) {
+        background-color: #f2f2f2;
+    }
+
 </style>
 
 
@@ -61,42 +88,62 @@
 <br />
 <br />
 
-<table border="1px solid black">
-  <tr>
-    <th>Candidate</th>
-    <th colspan="13">Preferences</th>
-  </tr>
-  <tr>
-    <th></th>
-    <th>1</th>
-    <th>2</th>
-    <th>3</th>
-    <th>4</th>
-    <th>5</th>
-    <th>6</th>
-    <th>7</th>
-    <th>8</th>
-    <th>9</th>
-    <th>10</th>
-    <th>11</th>
-    <th>12</th>
-    <th>13+</th>
+<table id="results-table">
+  <thead border-bottom="1px solid black">
+    <tr>
+      <th rowspan="2">Candidate</th>
+      <th colspan="13">Preferences</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13+</th>
+    </tr>
+  </thead>
 
-  </tr>
-  <tr>
-    <td>Candidate One</td>
-    <td>5</td>
-    <td>3</td>
-    <td>4</td>
-    <td>6</td>
-    <td>3</td>
-    <td>2</td>
-    <td>1</td>
-    <td>10</td>
-    <td>4</td>
-    <td>9</td>
-    <td>8</td>
-    <td>3</td>
-    <td>7</td>
-  </tr>
+  <tbody>
+    <tr>
+      <td>Candidate One</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>10</td>
+      <td>4</td>
+      <td>9</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Candidate Two</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>10</td>
+      <td>4</td>
+      <td>9</td>
+      <td>8</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+
 </table>

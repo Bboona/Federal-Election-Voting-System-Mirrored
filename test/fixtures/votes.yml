@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  preference: 1
+  candidateID: 1
+  ballotID: 1
+
+two:
+  preference: 1
+  candidateID: 1
+  ballotID: 1

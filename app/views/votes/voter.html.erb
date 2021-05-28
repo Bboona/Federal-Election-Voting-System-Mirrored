@@ -49,120 +49,57 @@
         font-size: 1.4em;
         text-align-last: center;
     }
+    .label{
+        background-color: white!important;
+    }
 
 </style>
-
-
 
 <div class="vote-outer">
 <form id="voteform">
   <div class="ui grid">
+
+
     <div class="option-a equal width row">
       <div class="option-desc column">
         <p class="description">
-          <h2>You may
-            <br>
-            vote in one of
-            <br>
-            2 ways
-          </h2>
-          <div class="voteoption">
-            <p class="voteoption-text">Either:</p>
-          </div>
-          <h2>Above the line</h2>
-          <p>By numbering at least <strong>6</strong><br>
+        <h2>You may
+          <br>
+          vote in one of
+          <br>
+          2 ways
+        </h2>
+        <div class="voteoption">
+          <p class="voteoption-text">Either:</p>
+        </div>
+        <h2>Above the line</h2>
+        <p>By numbering at least <strong>6</strong><br>
           of these boxes in the order<br>
           of your choice (with number<br>
           1 as your first choice)</p>
       </div>
 
       <!--  here goes selection forms-->
-      <div class="ballot-col column">
-        A<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate0">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 1</h5>
-      </div>
+      <% @parties.each do |party| %>
+        <div class="ballot-col column">
+          <%= @letter.next! %><br><br><br><br><br><br><br><br><br><br>
+          <select name="candidate0">
+            <option value="" label=" "></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <h5><%= party %></h5>
+        </div>
+      <% end %>
 
-      <div class="ballot-col column">
-        B<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 2</h5>
-      </div>
 
-      <div class="ballot-col column">
-        C<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate3">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 3</h5>
-      </div>
 
-      <div class="ballot-col column">
-        D<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate4">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 4</h5>
-      </div>
-
-      <div class="ballot-col column">
-        E<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate5">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 5</h5>
-      </div>
-
-      <div class="ballot-col column">
-        F<br><br><br><br><br><br><br><br><br><br>
-        <select name="candidate6">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-           <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <h5>PARTY 6</h5>
-      </div>
 
     </div>
-
 
     <div class="option-b equal width row">
       <div class="option-desc column">
@@ -179,95 +116,34 @@
       </div>
 
       <!--  here goes selection forms-->
-      <div class="ballot-col column">
-        <h5>PARTY 1</h5>
-        <select name="candidate0">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-        <br>
-        <br>
-        <select name="candidate1">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
+      <% @parties.each do |party| %>
+        <div class="ballot-col column">
+          <h5><%= party %></h5>
+          <% @candidates.each do |candidate| %>
+          <% if candidate.associated_party == party %>
+          <select name= <%= candidate.candidate_id %>>
+            <option value="" label= " "></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <div class="ui label" style="margin-top: 0em;">
+            <%= candidate.last_name.upcase %>
+            <br>
+            <%=  candidate.first_name %>
+<!--            <br>-->
+            <%#= candidate.associated_party %>
+          </div>
+            <br><br>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
 
 
-      <div class="ballot-col column">
-        <h5>PARTY 2</h5>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-
-      <div class="ballot-col column">
-        <h5>PARTY 2</h5>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-
-      <div class="ballot-col column">
-        <h5>PARTY 2</h5>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-
-      <div class="ballot-col column">
-        <h5>PARTY 2</h5>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-
-      <div class="ballot-col column">
-        <h5>PARTY 2</h5>
-        <select name="candidate2">
-          <option value="" label=" "></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
 
 
     </div>

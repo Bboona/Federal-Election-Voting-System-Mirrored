@@ -2,6 +2,12 @@
 
 <style>
 
+    .vote-outer {
+        margin: 2em;
+        padding: 1em;
+        border: 1px solid black;
+    }
+
     .voteoption {
         width: 10em;
         height: 25px;
@@ -48,9 +54,7 @@
 
 
 
-<hr>
-
-
+<div class="vote-outer">
 <form id="voteform">
   <div class="ui grid">
     <div class="option-a equal width row">
@@ -270,7 +274,7 @@
 
   </div>
 </form>
-
+</div>
 <%# form_for :vote, @vote, :url => {:action => "create"}, :html => {:class => "nifty_form"} do |form| %>
 <%# @parties.each do |party| %>
   <%# @candidates.each do |candidate| %>

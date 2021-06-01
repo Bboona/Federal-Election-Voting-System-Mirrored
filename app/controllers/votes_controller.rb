@@ -11,6 +11,8 @@ class VotesController < ApplicationController
     @parties = Candidate.distinct.pluck(:associated_party)
     # @parties = %i[ labour liberal nick greens libdems weed ]
     @letter = '@'
+
+
   end
 
   # GET /votes/1 or /votes/1.json

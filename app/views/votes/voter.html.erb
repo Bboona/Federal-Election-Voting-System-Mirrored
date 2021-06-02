@@ -53,7 +53,45 @@
         background-color: white!important;
     }
 
+    .popup{
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .popup .popuptext{
+      visibility: hidden;
+      width: 160px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px 0;
+      z-index: 1;
+      bottom: 125%
+      left: 50%;
+      margin-left: -80%;
+    }
+    .popup .popuptext::after{
+      content:"";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+    .popup .show{
+      visibility: visible;
+    }
+
 </style>
+<script>
+  function popup_Func(){
+    var popup = document.getElementById("popupresult");
+    popup.classList.toggle("show");
+  }
+</script>
 
 <div class="vote-outer">
 <form id="voteform">
@@ -130,12 +168,24 @@
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
+          <div class="popup" onclick="popup_Func()">
+              <%= candidate.last_name.upcase %>
+              <br>
+              <%=  candidate.first_name %>
+              <span class="popuptext" id="popupresult">
+                <%= candidate.last_name.upcase %>
+                <%=  candidate.first_name %>
+                <br>
+                <%=candidate.associated_party%>
+              </span>
+          </div>
           <div class="ui label" style="margin-top: 0em;">
             <%= candidate.last_name.upcase %>
             <br>
             <%=  candidate.first_name %>
 <!--            <br>-->
             <%#= candidate.associated_party %>
+            <%= %>
           </div>
             <br><br>
             <% end %>

@@ -8,11 +8,12 @@ class HomepageController < ApplicationController
   end
 
   def results
-    maxCandidateID = Vote.maximum("candidateID")
+    maxCandidateID = Candidate.maximum("id")
     maxPreference = Vote.maximum("preference")
     maxBallotID = Vote.maximum("ballotID")
 
     @votes = Array.new(maxCandidateID){Array.new(13, 0)}
+    @candidate = Candidate.all
 
     for i in 0...maxBallotID+1
       ballot = Vote.where(ballotID: i)

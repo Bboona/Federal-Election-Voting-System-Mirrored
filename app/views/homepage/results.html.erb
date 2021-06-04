@@ -86,7 +86,7 @@
   <tbody>
   <% @votes.each_with_index do |candidate, i| %>
     <tr>
-      <td> Candidate <%= i %></td>
+      <td><%= @candidate[i].first_name + " " + @candidate[i].last_name %></td>
       <% candidate.each do |preference| %>
         <td> <%= preference %></td>
       <% end %>

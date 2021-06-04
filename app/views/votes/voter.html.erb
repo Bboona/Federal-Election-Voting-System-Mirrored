@@ -1,5 +1,3 @@
-<!--https://stackoverflow.com/questions/1479219/validate-multiple-selects-for-preference-voting-in-rails?rq=1-->
-
 <style>
 
     .vote-outer {
@@ -49,6 +47,15 @@
         font-size: 1.4em;
         text-align-last: center;
     }
+    .select-box{
+        background-color: white;
+        height: 40px;
+        width: 40px;
+        /*float: left;*/
+        border: 2px solid #000;
+        font-size: 1.4em;
+        text-align-last: center;
+    }
     .label{
         background-color: white!important;
     }
@@ -56,9 +63,10 @@
 </style>
 
 <div class="vote-outer">
-<form id="voteform">
+  <%= form_with model: @vote do |form| %>
+  <%= form_tag votes_path(method: :post) do %>
+<!--<form id="voteform">-->
   <div class="ui grid">
-
 
     <div class="option-a equal width row">
       <div class="option-desc column">
@@ -80,21 +88,19 @@
       </div>
 
       <!--  here goes selection forms-->
-      <% @parties.each do |party| %>
-        <div class="ballot-col column">
-          <%= @letter.next! %><br><br><br><br><br><br><br><br><br><br>
-          <select name="candidate0">
-            <option value="" label=" "></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <h5><%= party %></h5>
-        </div>
-      <% end %>
+        <% @party_votes_empty.each_with_index do |party_vote, i| %>
+          <%= fields_for 'party_preferences[]', party_vote, include_id: false do |pv| %>
+            <div class="ballot-col column">
+              <%= @letter.next! %><br><br><br><br><br><br><br><br><br><br>
+              <%= pv.text_field :preference, name: 'party_preferences[' + i.to_s + '][preference]', class: "select-box"%>
+              <%= pv.hidden_field :candidateID, value: @candidateIDS[i], name: 'party_preferences[' + i.to_s + '][candidateID]' %>
+              <h5><%= @parties[i] %></h5>
+            </div>
+          <% end %>
+        <% end %>
+      <%#= submit_tag 'Submit votes',  class: 'ui button' %>
+
+    <%# end %>
 
 
 
@@ -115,52 +121,48 @@
           1 as your first choice)</p>
       </div>
 
-      <!--  here goes selection forms-->
-      <% @parties.each do |party| %>
-        <div class="ballot-col column">
-          <h5><%= party %></h5>
-          <% @candidates.each do |candidate| %>
-          <% if candidate.associated_party == party %>
-          <select name= <%= candidate.candidate_id %>>
-            <option value="" label= " "></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <div class="ui label" style="margin-top: 0em;">
-            <%= candidate.last_name.upcase %>
-            <br>
-            <%=  candidate.first_name %>
-<!--            <br>-->
-            <%#= candidate.associated_party %>
-          </div>
-            <br><br>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
 
+      <!--  here goes selection forms-->
+
+      <%#= form_tag votes_path(method: :post) do %>
+        <% @parties.each do |party| %>
+          <div class="ballot-col column">
+            <h5><%= party %></h5>
+            <br><br>
+            <% @candidate_votes_empty.each_with_index do |candidate_vote, i| %>
+              <%= fields_for 'candidate_preferences[]', candidate_vote, include_id: false do |pv| %>
+
+                    <% if @candidates[i].associated_party == party %>
+                      <%= pv.text_field :preference, name: 'candidate_preferences[' + i.to_s + '][preference]', class: "select-box"%>
+                      <%= pv.hidden_field :candidateID, value: @candidates[i].candidate_id, name: 'candidate_preferences[' + i.to_s + '][candidateID]' %>
+
+                      <div class="ui label" style="margin-top: 0em;">
+                        <%= @candidates[i].last_name.upcase %>
+                        <br>
+                        <%=  @candidates[i].first_name %>
+                        <br>
+                        <%= @candidates[i].associated_party %>
+                      </div>
+                      <br><br>
+                    <% end %>
+
+                <% end %>
+            <% end %>
+          </div>
+        <% end %>
 
 
 
     </div>
 
   </div>
-</form>
+<!--  <div>-->
+<!--    <button class="ui button" type="submit">Submit Votes</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+    <%= submit_tag 'Submit votes',  class: 'ui button' %>
+
+    <% end %>
+  <% end %>
 </div>
-<%# form_for :vote, @vote, :url => {:action => "create"}, :html => {:class => "nifty_form"} do |form| %>
-<%# @parties.each do |party| %>
-  <%# @candidates.each do |candidate| %>
-
-    <%# if candidate.associated_party == party %>
-      <%#= form.select ((1..6).map {|i| [i,i] }) %>
-
-    <%# end %>
-
-  <%# end %>
-
-  <%# end %>
-<%# end %>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :votes
   root "homepage#index"
   get '/voter', to: 'votes#voter'
+  post '/voter', to: 'votes#submit_votes'
   get '/admin', to: 'homepage#admin'
   get '/admin/results', to: 'homepage#results'
   get '/admin/candidates', to: 'candidates#index'

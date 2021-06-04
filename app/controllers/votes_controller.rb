@@ -1,5 +1,7 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
+  @ballotID_Counter = 0
 
   # GET /votes or /votes.json
   def index
@@ -8,9 +10,43 @@ class VotesController < ApplicationController
 
   def voter
     @candidates = Candidate.all.order(:associated_party)
-    @parties = Candidate.distinct.pluck(:associated_party)
     # @parties = %i[ labour liberal nick greens libdems weed ]
+    @parties = Candidate.distinct.pluck(:associated_party)
+    @candidateIDS = Candidate.pluck(:candidate_id)
+
     @letter = '@'
+
+    # create x empty votes for party votes
+    @party_votes_empty = []
+    @parties.each do
+      @party_votes_empty << Vote.new
+    end
+
+    # create x empty votes for each candidate
+    @candidate_votes_empty = []
+    @candidates.all.each do
+      @candidate_votes_empty << Vote.new
+    end
+
+  end
+
+
+  def submit_votes
+    puts params["party_preferences"], params["candidate_preferences"]
+    if Vote.all.order('ballotID DESC').first == nil
+      ballotCounter = 0
+    else
+      ballotCounter = Vote.all.order('ballotID DESC').first.ballotID + 1
+    end
+    params["party_preferences"].each do |key, value|
+      if value["preference"] != ""
+        @ballot_vote_params = ["preference" => value["preference"], "candidateID" => value["candidateID"], "ballotID" => ballotCounter ]
+        Vote.create(@ballot_vote_params)
+        # puts "preference: " + value["preference"] + " candidate: " + value["candidateID"] + " ballotID: " + ballotCounter.to_s
+      end
+    end
+    puts "AAAAAAAAAAAAAAAAAAAAA"
+    redirect_to voter_path
   end
 
   # GET /votes/1 or /votes/1.json
@@ -39,6 +75,7 @@ class VotesController < ApplicationController
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /votes/1 or /votes/1.json
@@ -71,6 +108,6 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.require(:vote).permit(:preference, :candidateID, :ballotID)
+      params.require(:vote).permit(:preference, :candidateID, :ballotID, :party_preferences, :candidate_preferencess)
     end
 end

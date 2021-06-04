@@ -12,7 +12,7 @@ class VotesController < ApplicationController
     @candidates = Candidate.all.order(:associated_party)
     # @parties = %i[ labour liberal nick greens libdems weed ]
     @parties = Candidate.distinct.pluck(:associated_party)
-    @candidateIDS = Candidate.pluck(:candidate_id)
+    @candidateIDS = Candidate.pluck(:id)
 
     @letter = '@'
 

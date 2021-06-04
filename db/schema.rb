@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_040258) do
+ActiveRecord::Schema.define(version: 2021_06_04_041226) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "associated_party"
     t.string "state"
-    t.integer "candidate_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

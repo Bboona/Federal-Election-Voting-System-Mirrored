@@ -81,5 +81,5 @@ candidate_list = [
 ]
 
 candidate_list.each do |first_name, last_name, associated_party, state, candidate_id|
-	Candidate.create( :first_name => first_name, :last_name => last_name, :associated_party => associated_party, :state => state, :candidate_id => candidate_id )
+	Candidate.create( :first_name => first_name, :last_name => last_name, :associated_party => associated_party, :state => state, :id => candidate_id )
 end

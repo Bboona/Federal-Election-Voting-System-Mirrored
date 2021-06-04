@@ -64,6 +64,6 @@ class CandidatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :associated_party, :state, :candidate_id)
+      params.require(:candidate).permit(:first_name, :last_name, :associated_party, :state)
     end
 end

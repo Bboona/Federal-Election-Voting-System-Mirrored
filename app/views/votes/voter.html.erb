@@ -134,7 +134,7 @@
 
                     <% if @candidates[i].associated_party == party %>
                       <%= pv.text_field :preference, name: 'candidate_preferences[' + i.to_s + '][preference]', class: "select-box"%>
-                      <%= pv.hidden_field :candidateID, value: @candidates[i].candidate_id, name: 'candidate_preferences[' + i.to_s + '][candidateID]' %>
+                      <%= pv.hidden_field :candidateID, value: @candidates[i].id, name: 'candidate_preferences[' + i.to_s + '][candidateID]' %>
 
                       <div class="ui label" style="margin-top: 0em;">
                         <%= @candidates[i].last_name.upcase %>

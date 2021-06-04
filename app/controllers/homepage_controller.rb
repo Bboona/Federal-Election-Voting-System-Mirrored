@@ -12,15 +12,17 @@ class HomepageController < ApplicationController
     maxPreference = Vote.maximum("preference")
     maxBallotID = Vote.maximum("ballotID")
 
-    @votes = Array.new(maxCandidateID){Array.new(maxPreference, 0)}
+    @votes = Array.new(maxCandidateID){Array.new(13, 0)}
 
-    for i in 1...maxBallotID+1
+    for i in 0...maxBallotID+1
       ballot = Vote.where(ballotID: i)
 
       ballot.each do |vote|
-        @votes[vote.candidateID-1][vote.preference-1] += 1
-
-        %% puts @votes.map { |x| x.join (' ')} %
+        if vote.preference <= 12
+          @votes[vote.candidateID-1][vote.preference-1] += 1
+        else
+          @votes[vote.candidateID-1][12] += 1
+        end
       end
     end
   end

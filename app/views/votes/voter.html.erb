@@ -67,6 +67,8 @@
 
 <%= semantic_flash %>
 
+<button onclick="document.getElementById('id01').style.display='block'" class="ui yellow button">For More Information About All Candidates</button>
+
 <div class="vote-outer">
   <%= form_with model: @vote do |form| %>
   <%= form_tag votes_path(method: :post) do %>
@@ -172,3 +174,240 @@
     <% end %>
   <% end %>
 </div>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/components/modal.min.js"></script>
+<style>
+.party {display:none}
+ .ui.active.modal:not(.compact) { position: fixed !important; }
+</style>
+<body>
+
+<div id="id01" class="ui small modal">
+ <div class="ui modal content">
+  <header class="ui blue container">
+    <span onclick="document.getElementById('id01').style.display='none'" class="ui blue right floated button">&times;</span>
+    <h2>Candidate Information</h2>
+  </header>
+
+  <div class="ui secondary pointing menu" style="overflow-x:scroll;overflow-y:hidden;height:30px;">
+    <button class="tablink ui active item" onclick="openParty(event, 'Liberal')">Liberal Party of Australia</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'Labor')">Australian Labor Party</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'Nationals')">The Nationals</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'Greens')">Australian Greens</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'Alliance')">Centre Alliance</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'OneNation')">Pauline Hanson's One Nation</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'Lambie')">Jacqui Lambie Network</button>
+    <button class="tablink ui active item" onclick="openParty(event, 'CountryLibs')">Country Liberal Party</button>
+  </div>
+  <div id="Liberal" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>ABETZ Eric </h5>
+      <p>Tasmania</p>
+      <h5>ANTIC Alex</h5>
+      <p>South Australia</p>
+      <h5>ASKEW Wendy</h5>
+      <p>Tasmania</p>
+      <h5>BIRMINGHAM Simon</h5>
+      <p>New South Wales</p>
+      <h5>BRAGG Andrew</h5>
+      <p>New South Wales</p>
+      <h5>BROCKMAN Slade </h5>
+      <p>Western Australia</p>
+      <h5>CASH Michaelia</h5>
+      <p>Western Australia</p>
+      <h5>CHANDLER Claire</h5>
+      <p>Tasmania</p>
+      <h5>COLBECK Richard</h5>
+      <p>Tasmania</p>
+      <h5>DUNIAM Jonathon</h5>
+      <p>Tasmania</p>
+    </div>
+    <div class="ui five wide column">
+      <h5>FAWCETT David</h5>
+      <p>South Australia</p>
+      <h5>FIERRAVANTI-WELLS Concetta</h5>
+      <p>New South Wales</p>
+      <h5>HENDERSON Sarah </h5>
+      <p>Victoria</p>
+      <h5>HUGHES Hollie</h5>
+      <p>New South Wales</p>
+      <h5>HUME Jane</h5>
+      <p>Victoria</p>
+      <h5>MCGRATH James</h5>
+      <p>Queensland</p>
+      <h5>MCLACHLAN Andrew</h5>
+      <p>South Australia</p>
+      <h5>MOLAN Jim</h5>
+      <p>New South Wales</p>
+      <h5>O'SULLIVAN Matt</h5>
+      <p>Western Australia</p>
+      <h5>PAYNE Marise</h5>
+    </div>
+    <div class="ui five wide column">
+      <p>New South Wales</p>
+      <h5>RENNICK Gerard</h5>
+      <p>Queensland</p>
+      <h5>REYNOLDS Linda</h5>
+      <p>Western Australia</p>
+      <h5>RUSTON Anne</h5>
+      <p>South Australia</p>
+      <h5>RYAN Scott</h5>
+      <p>Victoria</p>
+      <h5>SCARR Paul</h5>
+      <p>Queensland</p>
+      <h5>SESELJA Zed</h5>
+      <p>Australian Capital Territory</p>
+      <h5>SMALL Ben</h5>
+      <p>Western Australia</p>
+      <h5>SMITH Dean</h5>
+      <p>Western Australia</p>
+      <h5>STOKER Amanda</h5>
+      <p>Queensland</p>
+      <h5>VAN David</h5>
+      <p>Victoria</p>
+    </div>
+</div>
+
+  <div id="Labor" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>AYRES Tim</h5>
+      <p>New South Wales</p>
+      <h5>BILYK Catryna</h5>
+      <p>Tasmania</p>
+      <h5>BROWN Carol</h5>
+      <p>Tasmania</p>
+      <h5>CARR Kim</h5>
+      <p>Victoria</p>
+      <h5>CHISHOLM Anthony</h5>
+      <p>Queensland</p>
+      <h5>CICCONE Raff</h5>
+      <p>Victoria</p>
+      <h5>FARRELL Don</h5>
+      <p>South Australia</p>
+      <h5>GALLACHER Alex</h5>
+      <p>South Australia</p>
+      <h5>GALLAGHER Katy</h5>
+      <p>Australian Capital Territory</p>
+      <h5>GREEN Nita</h5>
+      <p>Queensland</p>
+    </div>
+    <div class="ui five wide column">
+      <h5>KENEALLY Kristina</h5>
+      <p>New South Wales</p>
+      <h5>KITCHING Kimberley</h5>
+      <p>Victoria</p>
+      <h5>LINES Sue</h5>
+      <p>Western Australia</p>
+      <h5>MCALLISTER Jenny</h5>
+      <p>New South Wales</p>
+      <h5>MCCARTHY Malarndirri</h5>
+      <p>Northern Territory</p>
+      <h5>O'NEILL Deborah</h5>
+      <p>New South Wales</p>
+      <h5>POLLEY Helen</h5>
+      <p>Tasmania</p>
+      <h5>SHELDON Tony</h5>
+      <p>New South Wales</p>
+      <h5>SMITH Marielle</h5>
+      <p>South Australia</p>
+      <h5>STERLE Glenn</h5>
+      <p>Western Australia</p>
+    </div>
+    <div class="ui five wide column">
+      <h5>URQUHART Anne</h5>
+      <p>Tasmania</p>
+      <h5>WALSH Jess</h5>
+      <p>Victoria</p>
+      <h5>WONG Penny</h5>
+      <p>South Australia</p>
+    </div>
+  </div>
+  <div id="Nationals" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>CANAVAN Matthew</h5>
+      <p>Queensland</p>
+      <h5>DAVEY Perin</h5>
+      <p>New South Wales</p>
+      <h5>MCDONALD Susan</h5>
+      <p>Queensland</p>
+      <h5>MCKENZIE Bridget</h5>
+      <p>Victoria</p>
+    </div>
+  </div>
+  <div id="Greens" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>FARUQI Mehreen</h5>
+      <p>New South Wales</p>
+      <h5>HANSON-YOUNG Sarah</h5>
+      <p>South Australia</p>
+      <h5>MCKIM Nick</h5>
+      <p>Tasmania</p>
+      <h5>RICE Janet</h5>
+      <p>Victoria</p>
+      <h5>SIEWERT Rachel</h5>
+      <p>Western Australia</p>
+      <h5>STEELE-JOHN Jordon</h5>
+      <p>Western Australia</p>
+      <h5>WATERS Larissa</h5>
+      <p>Queensland</p>
+    </div>
+  </div>
+  <div id="Alliance" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>GRIFF Stirling</h5>
+      <p>South Australia</p>
+    </div>
+  </div>
+  <div id="OneNation" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>HANSON Pauline</h5>
+      <p>Queensland</p>
+      <h5>ROBERTS Malcolm</h5>
+      <p>Queensland</p>
+    </div>
+  </div>
+  <div id="Lambie" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>LAMBIE Jacqui</h5>
+      <p>Tasmania</p>
+    </div>
+  </div>
+  <div id="CountryLibs" class="ui grid scrolling content party">
+    <div class="ui five wide column">
+      <h5>MCMAHON Sam</h5>
+      <p>Northern Territory</p>
+    </div>
+  </div>
+  <div class="ui light grey container">
+     <button class="ui right floated button" 
+     onclick="document.getElementById('id01').style.display='none'">Close</button>
+    </div> 
+ </div>
+</div>
+
+
+<script>
+document.getElementsByClassName("tablink")[0].click();
+
+function openParty(evt, partyName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("party");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].classList.remove("blue");
+  }
+  document.getElementById(partyName).style.display = "block";
+  evt.currentTarget.classList.add("blue");
+}
+</script>
+ 
+</body>

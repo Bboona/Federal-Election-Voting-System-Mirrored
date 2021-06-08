@@ -46,7 +46,7 @@ class VotesController < ApplicationController
       end
     end
     puts "AAAAAAAAAAAAAAAAAAAAA"
-    redirect_to voter_path
+    redirect_to voter_path, :flash => { :success => "Vote successful"}
   end
 
   # GET /votes/1 or /votes/1.json

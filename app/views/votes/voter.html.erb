@@ -62,6 +62,8 @@
 
 </style>
 
+<%= semantic_flash %>
+
 <div class="vote-outer">
   <%= form_with model: @vote do |form| %>
   <%= form_tag votes_path(method: :post) do %>

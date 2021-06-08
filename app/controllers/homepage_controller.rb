@@ -15,16 +15,19 @@ class HomepageController < ApplicationController
     @votes = Array.new(maxCandidateID){Array.new(13, 0)}
     @candidate = Candidate.all
 
-    for i in 0...maxBallotID+1
-      ballot = Vote.where(ballotID: i)
+    if !maxBallotID.nil?
+      for i in 0...maxBallotID+1
+        ballot = Vote.where(ballotID: i)
 
-      ballot.each do |vote|
-        if vote.preference <= 12
-          @votes[vote.candidateID-1][vote.preference-1] += 1
-        else
-          @votes[vote.candidateID-1][12] += 1
+        ballot.each do |vote|
+          if vote.preference <= 12
+            @votes[vote.candidateID-1][vote.preference-1] += 1
+          else
+            @votes[vote.candidateID-1][12] += 1
+          end
         end
       end
     end
+
   end
 end

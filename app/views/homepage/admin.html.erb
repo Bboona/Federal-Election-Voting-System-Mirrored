@@ -1,4 +1,5 @@
 <!--https://stackoverflow.com/questions/1479219/validate-multiple-selects-for-preference-voting-in-rails?rq=1-->
+<% content_for :title, "Admin Home" %>
 
 <style>
 
@@ -51,9 +52,13 @@
 <hr>
 
 <%= link_to admin_candidates_path, class: "ui button" do %>
-  <i class="home icon"></i> Candidates
+  <i class="street view icon"></i> Candidates
 <% end %>
 
-<%= link_to admin_results_path, class: "ui button" do %>
-  <i class="home icon"></i> Results
+<%= link_to admin_ballots_path, class: "ui button" do %>
+  <i class="table icon"></i> Ballots
+<% end %>
+
+<%= link_to admin_path, class: "ui button" do %>
+  <i class="clipboard icon"></i> Results
 <% end %>

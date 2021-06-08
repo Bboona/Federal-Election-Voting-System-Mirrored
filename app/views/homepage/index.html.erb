@@ -1,5 +1,6 @@
+<% content_for :title, "Senate Voting Home" %>
 
-  <style>
+<style>
       .buttonyellow {
           display: inline-block;
           margin:15px;
@@ -50,26 +51,18 @@
       }
   </style>
 
-<h1>This is the home page</h1>
-<h1>Penis</h1>
 
+<br>
 <div style="height:100px">
-  <div id="logo" style="float:left;">
-    <%= link_to root_path do %>
-      <%= image_tag 'logo.jpg', width: 110, height: 100, alt: 'homepage'%>
-    <% end %>
-  </div>
+
   <div id="login" style="float:right;">
-    <button class="buttonyellow">
-      <%= link_to voter_path do %>
-        Vote
-      <% end %>
-    </button>
-    <button class="buttonyellow">
-      <%= link_to admin_path do %>
-        Admin
-      <% end %>
-    </button>
+    <%= link_to voter_path, class: "ui button" do %>
+      <i class="tasks icon"></i>Vote
+    <% end %>
+
+    <%= link_to admin_path, class: "ui button" do %>
+      <i class="address card icon"></i>Admin
+    <% end %>
   </div>
 
 </div>

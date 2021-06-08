@@ -8,11 +8,26 @@ class VotesController < ApplicationController
     @votes = Vote.all
   end
 
+  def ballots
+    @ballots = []
+    for i in 0..( Vote.all.order('ballotID DESC').first.ballotID )
+      @ballot = Vote.where(:ballotID => i)
+      @ballots.push(@ballot)
+    end
+    puts @ballots
+  end
+
   def voter
     @candidates = Candidate.all.order(:associated_party)
     # @parties = %i[ labour liberal nick greens libdems weed ]
     @parties = Candidate.distinct.pluck(:associated_party)
-    @candidateIDS = Candidate.pluck(:id)
+    @candidateIDS = []
+
+    @parties.each_with_index do |party, i|
+      @candidateIDS.push( @candidates.where(associated_party: party).first.id )
+    end
+
+    puts @parties, @candidateIDS
 
     @letter = '@'
 
@@ -32,20 +47,31 @@ class VotesController < ApplicationController
 
 
   def submit_votes
-    puts params["party_preferences"], params["candidate_preferences"]
+    puts params["party_preferences"]
+    # puts params["candidate_preferences"]
     if Vote.all.order('ballotID DESC').first == nil
       ballotCounter = 0
     else
       ballotCounter = Vote.all.order('ballotID DESC').first.ballotID + 1
     end
+
     params["party_preferences"].each do |key, value|
+      if value["preference"] != ""
+        @ballot_vote_params = ["preference" => value["preference"], "candidateID" => value["candidateID"], "ballotID" => ballotCounter ]
+        Vote.create(@ballot_vote_params)
+        puts "preference: " + value["preference"] + " candidate: " + value["candidateID"] + " ballotID: " + ballotCounter.to_s
+      end
+    end
+
+    params["candidate_preferences"].each do |key, value|
       if value["preference"] != ""
         @ballot_vote_params = ["preference" => value["preference"], "candidateID" => value["candidateID"], "ballotID" => ballotCounter ]
         Vote.create(@ballot_vote_params)
         # puts "preference: " + value["preference"] + " candidate: " + value["candidateID"] + " ballotID: " + ballotCounter.to_s
       end
     end
-    puts "AAAAAAAAAAAAAAAAAAAAA"
+
+    # redirect_to root_path
     redirect_to voter_path, :flash => { :success => "Vote successful"}
   end
 

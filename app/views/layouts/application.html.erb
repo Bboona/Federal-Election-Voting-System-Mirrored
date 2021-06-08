@@ -11,16 +11,21 @@
   </head>
 
   <style>
-    .header{
-      background-color: #6d2787;
-      height: 130px;
-      padding: 5px;
-    }
+      .header{
+          background-color: #6d2787;
+          height: 150px;
+          padding: 30px;
+      }
+      .ui.menu.fixed.top{
+               background-color: #6d2787;!important;
+               /*height: 130px;!important;*/
+               padding: 30px;!important;
+           }
   </style>
 
   <body>
 
-    <div style="height:150px" class="header">
+    <div style="height:150px" class="ui fixed top menu header-fixed">
       <div id="logo" style="float:left;">
         <%= link_to root_path do %>
           <%= image_tag 'logo.jpg', width: 110, height: 100, alt: 'homepage'%>
@@ -28,13 +33,14 @@
       </div>
 
 
-      <h1 style="color: white;">Vote</h1>
-
+      <h1 style="color: white; margin-left: 20px"><%= yield(:title) %></h1>
       <!--this button will look good once semantic is installed-->
-      <%= link_to root_path, class: "ui button" do %>
-        <i class="home icon"></i> Home
-      <% end %>
+      <%#= link_to root_path, class: "ui button" do %>
+<!--        <i class="home icon"></i> Home-->
+      <%# end %>
     </div>
+
+    <div class="header"></div>
 
     <%= yield %>
 

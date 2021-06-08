@@ -1,14 +1,21 @@
+<% content_for :title, "Candidates" %>
+
+
 <p id="notice"><%= notice %></p>
 
+<%= link_to "#", class: "ui button" do %>
+  <i class="street view icon"></i> Candidates
+<% end %>
+
+<%= link_to admin_ballots_path, class: "ui button" do %>
+  <i class="table icon"></i> Ballots
+<% end %>
+
 <%= link_to admin_path, class: "ui button" do %>
-  <i class="home icon"></i> Admin Home
+  <i class="clipboard icon"></i> Results
 <% end %>
 
-<%= link_to admin_results_path, class: "ui button" do %>
-  <i class="home icon"></i> Results
-<% end %>
-
-<h1>Candidates</h1>
+<!--<h1>Candidates</h1>-->
 
 <table class="ui table">
   <thead>

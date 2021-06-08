@@ -1,3 +1,6 @@
+<% content_for :title, "Vote" %>
+
+
 <style>
 
     .vote-outer {
@@ -7,11 +10,11 @@
     }
 
     .voteoption {
-        width: 10em;
+        width: 7em;
         height: 25px;
         position: relative;
         background: black;
-        padding: 0px 0px 0px 0px;
+        padding: 0;
     }
     .voteoption:before {
         content: "";
@@ -131,19 +134,20 @@
           <div class="ballot-col column">
             <h5><%= party %></h5>
             <br><br>
-            <% @candidate_votes_empty.each_with_index do |candidate_vote, i| %>
+            <% @candidate_votes_empty.each_with_index do |candidate_vote, j| %>
+
               <%= fields_for 'candidate_preferences[]', candidate_vote, include_id: false do |pv| %>
 
-                    <% if @candidates[i].associated_party == party %>
-                      <%= pv.text_field :preference, name: 'candidate_preferences[' + i.to_s + '][preference]', class: "select-box"%>
-                      <%= pv.hidden_field :candidateID, value: @candidates[i].id, name: 'candidate_preferences[' + i.to_s + '][candidateID]' %>
+                    <% if @candidates[j].associated_party == party %>
+                      <%= pv.text_field :preference, name: 'candidate_preferences[' + j.to_s + '][preference]', class: "select-box"%>
+                      <%= pv.hidden_field :candidateID, value: @candidates[j].id, name: 'candidate_preferences[' + j.to_s + '][candidateID]' %>
 
                       <div class="ui label" style="margin-top: 0em;">
-                        <%= @candidates[i].last_name.upcase %>
+                        <%= @candidates[j].last_name.upcase %>
                         <br>
-                        <%=  @candidates[i].first_name %>
+                        <%=  @candidates[j].first_name %>
                         <br>
-                        <%= @candidates[i].associated_party %>
+                        <%= @candidates[j].associated_party %>
                       </div>
                       <br><br>
                     <% end %>

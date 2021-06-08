@@ -1,64 +1,20 @@
 <!--https://stackoverflow.com/questions/1479219/validate-multiple-selects-for-preference-voting-in-rails?rq=1-->
-
-<style>
-
-    .voteoption {
-        width: 10em;
-        height: 25px;
-        position: relative;
-        background: black;
-        padding: 0px 0px 0px 0px;
-    }
-    .voteoption:before {
-        content: "";
-        position: absolute;
-        right: -20px;
-        bottom: 0;
-        width: 0;
-        height: 0;
-        border-left: 20px solid black;
-        border-top: 12.5px solid transparent;
-        border-bottom: 12.5px solid transparent;
-    }
-    .voteoption-text {
-        color: white;
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-
-    .option-a{
-        border-bottom: 15px solid black;
-        margin-bottom: 10px;
-    }
-    .ballot-col{
-        border-left: 1px solid black;
-        padding: 3px;
-    }
-    select{
-        background-color: white;
-        height: 40px;
-        width: 40px;
-        /*float: left;*/
-        border: 2px solid #000;
-        font-size: 1.4em;
-        text-align-last: center;
-    }
-</style>
+<% content_for :title, "Results" %>
 
 
-
-<hr>
+<p id="notice"><%= notice %></p>
 
 <%= link_to admin_candidates_path, class: "ui button" do %>
-  <i class="home icon"></i> Candidates
+  <i class="street view icon"></i> Candidates
 <% end %>
 
-<%= link_to admin_path, class: "ui button" do %>
-  <i class="home icon"></i> Admin Home
+<%= link_to admin_ballots_path, class: "ui button" do %>
+  <i class="table icon"></i> Ballots
 <% end %>
 
-<br />
-<br />
+<%= link_to "#", class: "ui button" do %>
+  <i class="clipboard icon"></i> Results
+<% end %>
 
 <table class="ui table">
   <thead border-bottom="1px solid black">

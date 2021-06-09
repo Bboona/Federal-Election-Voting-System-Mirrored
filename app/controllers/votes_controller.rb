@@ -10,9 +10,12 @@ class VotesController < ApplicationController
 
   def ballots
     @ballots = []
-    for i in 0..( Vote.all.order('ballotID DESC').first.ballotID )
-      @ballot = Vote.where(:ballotID => i)
-      @ballots.push(@ballot)
+
+    if !Vote.maximum("ballotID").nil?
+      for i in 0..( Vote.all.order('ballotID DESC').first.ballotID )
+        @ballot = Vote.where(:ballotID => i)
+        @ballots.push(@ballot)
+      end
     end
     puts @ballots
   end

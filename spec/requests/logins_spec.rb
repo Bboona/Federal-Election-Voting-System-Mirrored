@@ -10,7 +10,7 @@ RSpec.describe "Logins", type: :request do
 
   describe "Logging in as an Admin" do
     it "Should show the admin page" do
-      get admin_path
+      get "/admin/candidates"
       expect(response).to have_http_status(200)
     end
   end

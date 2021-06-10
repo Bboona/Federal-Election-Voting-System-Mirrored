@@ -21,9 +21,9 @@ class HomepageController < ApplicationController
 
         ballot.each do |vote|
           if vote.preference <= 12
-            @votes[vote.candidateID-1][vote.preference-1] += 1
+            @votes[vote.id-1][vote.preference-1] += 1
           else
-            @votes[vote.candidateID-1][12] += 1
+            @votes[vote.id-1][12] += 1
           end
         end
       end

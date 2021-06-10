@@ -4,7 +4,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= link_to admin_candidates_path, class: "ui button" do %>
+<%= link_to admin_candidates_path,id: "candidates", class: "ui button" do %>
   <i class="street view icon"></i> Candidates
 <% end %>
 
@@ -16,7 +16,7 @@
   <i class="clipboard icon"></i> Results
 <% end %>
 
-<table class="ui table">
+<table id= "results" class="ui table">
   <thead border-bottom="1px solid black">
     <tr>
       <th rowspan="2">Candidate</th>
@@ -43,8 +43,8 @@
   <% @votes.each_with_index do |candidate, i| %>
     <tr>
       <td><%= @candidate[i].first_name + " " + @candidate[i].last_name %></td>
-      <% candidate.each do |preference| %>
-        <td> <%= preference %></td>
+      <%candidate.each do |preference| %>
+        <td id="<%=preference%>"> <%= preference %> </td>
       <% end %>
     </tr>
   <% end %>

@@ -308,7 +308,7 @@ DEPENDENCIES
   semantic-ui-sass
   simplecov
   spring
-  sqlite3 (~> 1.4)
+  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

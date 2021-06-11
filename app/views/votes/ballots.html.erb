@@ -16,7 +16,7 @@
 
 
 <!--<h1>View All Ballots</h1>-->
-
+<% if @ballots != [] %>
 <% @ballots.each do |ballot| %>
 <table class="ui table">
   <thead>
@@ -32,8 +32,8 @@
     <% ballot.each do |vote| %>
       <tr>
         <td><%= vote.preference %></td>
-        <td><%= vote.candidateID %></td>
-        <td><%= vote.ballotID %></td>
+        <td><%= vote.candidateid %></td>
+        <td><%= vote.ballotid %></td>
 <!--        <td><%#= link_to 'Show', vote %></td>-->
 <!--        <td><%#= link_to 'Edit', edit_vote_path(vote) %></td>-->
         <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,6 +41,7 @@
     <% end %>
   </tbody>
 </table>
+  <% end %>
   <% end %>
 
 <br>

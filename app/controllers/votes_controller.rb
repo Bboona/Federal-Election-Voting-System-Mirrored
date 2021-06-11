@@ -12,8 +12,8 @@ class VotesController < ApplicationController
     @ballots = []
 
     if !Vote.maximum("ballotID").nil?
-      for i in 0..( Vote.all.order('ballotID DESC').first.ballotID )
-        @ballot = Vote.where(:ballotID => i)
+      for i in 0..( Vote.all.order('ballotid DESC').first.ballotid )
+        @ballot = Vote.where(:ballotid => i)
         @ballots.push(@ballot)
       end
     end
@@ -52,23 +52,23 @@ class VotesController < ApplicationController
   def submit_votes
     puts params["party_preferences"]
     # puts params["candidate_preferences"]
-    if Vote.all.order('ballotID DESC').first == nil
+    if Vote.all.order('ballotid DESC').first == nil
       ballotCounter = 0
     else
-      ballotCounter = Vote.all.order('ballotID DESC').first.ballotID + 1
+      ballotCounter = Vote.all.order('ballotid DESC').first.ballotid + 1
     end
 
     params["party_preferences"].each do |key, value|
       if value["preference"] != ""
-        @ballot_vote_params = ["preference" => value["preference"], "candidateID" => value["candidateID"], "ballotID" => ballotCounter ]
+        @ballot_vote_params = ["preference" => value["preference"], "candidateid" => value["candidateid"], "ballotid" => ballotCounter ]
         Vote.create(@ballot_vote_params)
-        puts "preference: " + value["preference"] + " candidate: " + value["candidateID"] + " ballotID: " + ballotCounter.to_s
+        puts "preference: " + value["preference"] + " candidate: " + value["candidateid"] + " ballotid: " + ballotCounter.to_s
       end
     end
 
     params["candidate_preferences"].each do |key, value|
       if value["preference"] != ""
-        @ballot_vote_params = ["preference" => value["preference"], "candidateID" => value["candidateID"], "ballotID" => ballotCounter ]
+        @ballot_vote_params = ["preference" => value["preference"], "candidateid" => value["candidateIid"], "ballotid" => ballotCounter ]
         Vote.create(@ballot_vote_params)
         # puts "preference: " + value["preference"] + " candidate: " + value["candidateID"] + " ballotID: " + ballotCounter.to_s
       end
@@ -137,6 +137,6 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.require(:vote).permit(:preference, :candidateID, :ballotID, :party_preferences, :candidate_preferencess)
+      params.require(:vote).permit(:preference, :candidateid, :ballotid, :party_preferences, :candidate_preferencess)
     end
 end

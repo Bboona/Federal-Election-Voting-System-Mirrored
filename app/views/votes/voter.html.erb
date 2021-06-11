@@ -100,7 +100,7 @@
             <div class="ballot-col column">
               <%= @letter.next! %><br><br><br><br><br><br><br><br><br><br>
               <%= pv.text_field :preference, name: 'party_preferences[' + i.to_s + '][preference]', class: "select-box"%>
-              <%= pv.hidden_field :candidateID, value: @candidateIDS[i], name: 'party_preferences[' + i.to_s + '][candidateID]' %>
+              <%= pv.hidden_field :candidateid, value: @candidateIDS[i], name: 'party_preferences[' + i.to_s + '][candidateid]' %>
               <h5><%= @parties[i] %></h5>
             </div>
           <% end %>
@@ -142,7 +142,7 @@
 
                     <% if @candidates[j].associated_party == party %>
                       <%= pv.text_field :preference, name: 'candidate_preferences[' + j.to_s + '][preference]', class: "select-box"%>
-                      <%= pv.hidden_field :candidateID, value: @candidates[j].id, name: 'candidate_preferences[' + j.to_s + '][candidateID]' %>
+                      <%= pv.hidden_field :candidateid, value: @candidates[j].id, name: 'candidate_preferences[' + j.to_s + '][candidateid]' %>
 
                       <div class="ui label" style="margin-top: 0em;">
                         <%= @candidates[j].last_name.upcase %>
